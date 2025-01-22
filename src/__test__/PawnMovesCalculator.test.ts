@@ -22,5 +22,18 @@ describe("PawnMovesCalculator class", () => {
         expect(possibleMoves.map(cell => cell.getName())).toEqual(expectedMoves);
       },
     );
+
+    it.each(["A8", "E8", "H8"])(
+      "should return no moves if pawn is at the last row",
+      (cellName) => {
+        const board = new Board(new CellNameGenerator());
+        const pawnMovesCalculator = new PawnMovesCalculator();
+        const cell = board.getCellByName(cellName)!;
+
+        const possibleMoves = pawnMovesCalculator.getPossibleMoves(cell, board);
+
+        expect(possibleMoves).toEqual([]);
+      },
+    );
   });
 });

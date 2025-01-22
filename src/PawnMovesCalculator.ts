@@ -9,6 +9,9 @@ export class PawnMovesCalculator implements IPossibleMovesCalculator {
       currentCell.getRow() + 1,
       currentCell.getColumn(),
     );
+    if (!nextSquare) {
+      return [];
+    }
     return [nextSquare];
   }
 }
