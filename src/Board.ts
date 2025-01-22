@@ -21,4 +21,14 @@ export class Board {
   public getCellAtCoordinates(row: number, column: number): Cell {
     return this._cells[row][column];
   }
+
+  public getCellByName(cellName: string): Cell | undefined {
+    for (let row = 0; row < Board.MAX_ROWS; row++) {
+      for (let column = 0; column < Board.MAX_COLUMNS; column++) {
+        if (this._cells[row][column].getName() === cellName.toUpperCase()) {
+          return this._cells[row][column];
+        }
+      }
+    }
+  }
 }

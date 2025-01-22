@@ -23,4 +23,23 @@ describe("Board class", () => {
       },
     );
   });
+
+  describe("getCellByName()", () => {
+
+    it.each(["A1", "E5", "H8"])("should return the cell with given name", (cellName) => {
+      const board = new Board(new CellNameGenerator());
+
+      const cell = board.getCellByName(cellName);
+
+      expect(cell?.getName()).toBe(cellName);
+    });
+
+    it("should return 'undefined' if cell name is incorrect", () => {
+      const board = new Board(new CellNameGenerator());
+
+      const cell = board.getCellByName("Z9");
+
+      expect(cell).toBeUndefined();
+    });
+  });
 });
