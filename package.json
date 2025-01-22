@@ -1,0 +1,27 @@
+{
+  "name": "chess-technogise",
+  "version": "1.0.0",
+  "description": "Chess coding problem from Technogise",
+  "main": "src/index.ts",
+  "repository": "https://github.com/omkarsheral1989/chess-technogise",
+  "author": "Omkar Sheral <omkar.sheral.1989@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "engines": {
+    "node": ">=22.6.0"
+  },
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^22.10.7",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
