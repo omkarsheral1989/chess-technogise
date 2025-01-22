@@ -19,4 +19,20 @@ export class Piece {
   public getPossibleMoves(): Cell[] {
     return this._possibleMovesCalculator.getPossibleMoves(this._cell, this._board);
   }
+
+  public getType(): PieceType {
+    return this._type;
+  }
+
+  public getCell(): Cell {
+    return this._cell;
+  }
+
+  public getBoard(): Board {
+    return this._board;
+  }
+
+  public getMovesCalculator(): IPossibleMovesCalculator {
+    return this._possibleMovesCalculator;
+  }
 }
