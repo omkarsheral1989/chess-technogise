@@ -18,8 +18,8 @@ export class Board {
     }
   }
 
-  public getCellAtCoordinates(row: number, column: number): Cell {
-    return this._cells[row][column];
+  public getCellAtCoordinates(row: number, column: number): Cell | undefined {
+    return this._cells[row]?.[column];
   }
 
   public getCellByName(cellName: string): Cell | undefined {
