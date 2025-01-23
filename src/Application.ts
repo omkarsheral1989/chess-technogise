@@ -5,16 +5,20 @@ import {Cli} from "./Cli";
 
 export class Application {
   public static main() {
-    const {board, pieceFactory, cli} = this.instantiateClasses();
+    try {
+      const {board, pieceFactory, cli} = this.instantiateClasses();
 
-    const piece = this.createPiece(cli, board, pieceFactory);
+      const piece = this.createPiece(cli, board, pieceFactory);
 
-    const possibleMoves = piece.getPossibleMoves();
+      const possibleMoves = piece.getPossibleMoves();
 
-    console.log(
-      "Possible moves: " +
-      possibleMoves.map(cell => cell.getName()).join(", "),
-    );
+      console.log(
+        "Possible moves: " +
+        possibleMoves.map(cell => cell.getName()).join(", "),
+      );
+    } catch (e) {
+      console.log((e as Error).message);
+    }
   }
 
   private static instantiateClasses() {
