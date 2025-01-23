@@ -20,7 +20,7 @@ describe("CLI class", () => {
     });
 
 
-    it.each(["King", " , ", ",A1", "Pawn, A1, King"])
+    it.each(["King", " , ", ",A1", "Pawn, A1, King", "", "  ", null])
     ("should throw exception if input is invalid", (inputStr) => {
       prompter.mockReturnValue(inputStr);
       const cli = Cli.getInstance();
