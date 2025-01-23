@@ -1,1 +1,3 @@
-console.log("hello world");
+import {Application} from "./Application";
+
+Application.main();
