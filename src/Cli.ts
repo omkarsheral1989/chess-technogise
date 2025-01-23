@@ -17,7 +17,7 @@ export class Cli {
   }
 
   public readPieceTypeAndCellName() {
-    const inputString = this._prompter("Enter the piece type and position: ");
+    const inputString = this._prompter("Enter <piece type>, <position>: ");
     const strings = inputString.split(",");
 
     if (strings.length !== 2 || strings[0].trim().length === 0 || strings[1].trim().length === 0) {

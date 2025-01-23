@@ -36,6 +36,7 @@ describe("CLI class", () => {
       const result = cli.readPieceTypeAndCellName();
 
       expect(result).toEqual({pieceType: "KinG", cellName: "A1"});
+      expect(prompter).toHaveBeenCalledWith("Enter <piece type>, <position>: ");
     });
   });
 });
