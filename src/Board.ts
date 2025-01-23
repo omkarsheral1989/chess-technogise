@@ -22,7 +22,7 @@ export class Board {
     return this._cells[row]?.[column];
   }
 
-  public getCellByName(cellName: string): Cell | undefined {
+  public getCellByName(cellName: string): Cell {
     for (let row = 0; row < Board.MAX_ROWS; row++) {
       for (let column = 0; column < Board.MAX_COLUMNS; column++) {
         if (this._cells[row][column].getName() === cellName.toUpperCase()) {
@@ -30,5 +30,6 @@ export class Board {
         }
       }
     }
+    throw new Error(`Invalid cell name: ${cellName}`);
   }
 }

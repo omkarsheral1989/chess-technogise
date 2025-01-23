@@ -1,6 +1,7 @@
 import {Board} from "../Board";
 import {CellNameGenerator} from "../CellNameGenerator";
 
+
 describe("Board class", () => {
 
   describe("constructor()", () => {
@@ -69,12 +70,10 @@ describe("Board class", () => {
       expect(cell?.getName()).toBe(cellName);
     });
 
-    it("should return 'undefined' if cell name is incorrect", () => {
+    it("should throw error if cell name is incorrect", () => {
       const board = new Board(new CellNameGenerator());
 
-      const cell = board.getCellByName("Z9");
-
-      expect(cell).toBeUndefined();
+      expect(() => board.getCellByName("Z9")).toThrowError("Invalid cell name: Z9");
     });
   });
 });
