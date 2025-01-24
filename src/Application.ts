@@ -29,8 +29,8 @@ export class Application {
   }
 
   private static createPiece(cli: Cli, board: Board, pieceFactory: PieceFactory) {
-    const {pieceType, cellName} = cli.readPieceTypeAndCellName();
+    const {pieceType, cellName, color} = cli.readPieceTypeCellNameAndColor();
     const cell = board.getCellByName(cellName);
-    return pieceFactory.createPiece(pieceType, cell, board);
+    return pieceFactory.createPiece(pieceType, cell, board, color);
   }
 }

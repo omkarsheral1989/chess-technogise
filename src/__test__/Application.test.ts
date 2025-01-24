@@ -29,14 +29,15 @@ describe("Application class", () => {
     });
 
     it.each([
-      {userInput: "", expectedErrorMessage: "Invalid input"},
-      {userInput: "Pawn A1", expectedErrorMessage: "Invalid input"},
-      {userInput: "Pawn", expectedErrorMessage: "Invalid input"},
-      {userInput: ",A2", expectedErrorMessage: "Invalid input"},
-      {userInput: "pawn,", expectedErrorMessage: "Invalid input"},
-      {userInput: "A1, Pawn", expectedErrorMessage: "Invalid cell name: Pawn"},
-      {userInput: "Pawn, Z9", expectedErrorMessage: "Invalid cell name: Z9"},
-      {userInput: "Elephant, A2", expectedErrorMessage: "Invalid piece type: Elephant"},
+      {userInput: "", expectedErrorMessage: "Invalid input: "},
+      {userInput: "Pawn A1", expectedErrorMessage: "Invalid input: Pawn A1"},
+      {userInput: "Pawn", expectedErrorMessage: "Invalid input: Pawn"},
+      {userInput: ",A2", expectedErrorMessage: "Invalid input: ,A2"},
+      {userInput: "pawn,", expectedErrorMessage: "Invalid input: pawn,"},
+      {userInput: "A1, Pawn, black", expectedErrorMessage: "Invalid cell name: Pawn"},
+      {userInput: "Pawn, Z9, white", expectedErrorMessage: "Invalid cell name: Z9"},
+      {userInput: "Elephant, A2, white", expectedErrorMessage: "Invalid piece type: Elephant"},
+      {userInput: "Pawn, A2, red", expectedErrorMessage: "Invalid color: red"},
     ])
     (
       "should log error for incorrect input",
