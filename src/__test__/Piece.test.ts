@@ -3,6 +3,7 @@ import {PieceType} from "../PieceType";
 import {Board} from "../Board";
 import {CellNameGenerator} from "../CellNameGenerator";
 import {PawnMovesCalculator} from "../PawnMovesCalculator";
+import {Color} from "../Color";
 
 jest.mock("../PawnMovesCalculator");
 
@@ -20,7 +21,7 @@ describe("Piece class", () => {
       const cell = board.getCellByName("A2")!;
       const pawnMovesCalculator = new PawnMovesCalculator();
       const possibleMoves = [board.getCellByName("A3")!];
-      const pawn = new Piece(PieceType.Pawn, cell, board, pawnMovesCalculator);
+      const pawn = new Piece(PieceType.Pawn, cell, board, pawnMovesCalculator, Color.WHITE);
       (pawnMovesCalculator.getPossibleMoves as jest.Mock).mockReturnValue(possibleMoves);
 
       expect(pawn.getPossibleMoves()).toEqual(possibleMoves);
