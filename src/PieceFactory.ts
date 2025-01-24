@@ -17,10 +17,14 @@ export class PieceFactory {
     [PieceType.Queen]: {type: PieceType.Queen, possibleMovesCalculatorClass: QueenMovesCalculator},
   };
 
-  public createPiece(type: string, cell: Cell, board: Board): Piece {
+  public createPiece(type: string, cell: Cell, board: Board, color: string): Piece {
     const mapValue = this._possibleMovesCalculatorMap[type.toUpperCase() as PieceType];
     if (!mapValue) {
       throw new Error(`Invalid piece type: ${type}`);
+    }
+
+    if (!(color.toUpperCase() in Color)) {
+      throw new Error(`Invalid color: ${color}}`);
     }
 
     // @ts-ignore

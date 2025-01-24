@@ -37,6 +37,15 @@ describe("PieceFactory class", () => {
 
       expect(() => pieceFactory.createPiece("wrong", cell, board))
         .toThrowError("Invalid piece type: wrong");
+
+    it("should throw error for invalid color", () => {
+      const board = new Board(new CellNameGenerator());
+      const cell = board.getCellByName("A2")!;
+      const pieceFactory = new PieceFactory();
+
+      expect(() => pieceFactory.createPiece("Pawn", cell, board, "blue"))
+        .toThrowError("Invalid color: blue");
     });
   });
 });
+
