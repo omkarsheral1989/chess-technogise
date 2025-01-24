@@ -8,9 +8,9 @@ describe("PawnMovesCalculator class", () => {
   describe("getPossibleMoves()", () => {
 
     it.each([
-      {cellName: "A1", expectedMoves: ["A2"], forwardDirection: ForwardDirection.WHITE},
-      {cellName: "E2", expectedMoves: ["E1"], forwardDirection: ForwardDirection.BLACK},
-      {cellName: "H3", expectedMoves: ["H4"], forwardDirection: ForwardDirection.WHITE},
+      {cellName: "A1", expectedMoves: ["A2"], forwardDirection: ForwardDirection.UP},
+      {cellName: "E2", expectedMoves: ["E1"], forwardDirection: ForwardDirection.DOWN},
+      {cellName: "H3", expectedMoves: ["H4"], forwardDirection: ForwardDirection.UP},
     ])(
       "should return correct moves for given position",
       ({cellName, expectedMoves, forwardDirection}) => {
@@ -25,12 +25,12 @@ describe("PawnMovesCalculator class", () => {
     );
 
     it.each([
-      {cellName: "A8", forwardDirection: ForwardDirection.WHITE},
-      {cellName: "E8", forwardDirection: ForwardDirection.WHITE},
-      {cellName: "H8", forwardDirection: ForwardDirection.WHITE},
-      {cellName: "A1", forwardDirection: ForwardDirection.BLACK},
-      {cellName: "E1", forwardDirection: ForwardDirection.BLACK},
-      {cellName: "H1", forwardDirection: ForwardDirection.BLACK},
+      {cellName: "A8", forwardDirection: ForwardDirection.UP},
+      {cellName: "E8", forwardDirection: ForwardDirection.UP},
+      {cellName: "H8", forwardDirection: ForwardDirection.UP},
+      {cellName: "A1", forwardDirection: ForwardDirection.DOWN},
+      {cellName: "E1", forwardDirection: ForwardDirection.DOWN},
+      {cellName: "H1", forwardDirection: ForwardDirection.DOWN},
     ])(
       "should return no moves if pawn is at the last row",
       ({cellName, forwardDirection}) => {

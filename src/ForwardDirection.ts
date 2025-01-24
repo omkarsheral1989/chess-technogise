@@ -1,4 +1,4 @@
 export enum ForwardDirection {
-  "WHITE" = 1,
-  "BLACK" = -1,
+  UP = 1,
+  DOWN = -1,
 }
