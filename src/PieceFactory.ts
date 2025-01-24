@@ -6,6 +6,8 @@ import {IPossibleMovesCalculator} from "./IPossibleMovesCalculator";
 import {Piece} from "./Piece";
 import {Board} from "./Board";
 import {Cell} from "./Cell";
+import {Color} from "./Color";
+import {colorDirectionMap} from "./ForwardDirection";
 
 export class PieceFactory {
   protected _possibleMovesCalculatorMap: Record<PieceType, {
@@ -24,10 +26,18 @@ export class PieceFactory {
     }
 
     if (!(color.toUpperCase() in Color)) {
-      throw new Error(`Invalid color: ${color}}`);
+      throw new Error(`Invalid color: ${color}`);
     }
 
-    // @ts-ignore
-    return new Piece(mapValue.type, cell, board, new mapValue.possibleMovesCalculatorClass());
+    const forwardDirection = colorDirectionMap[color.toUpperCase() as Color];
+
+    return new Piece(
+      mapValue.type,
+      cell,
+      board,
+      // @ts-ignore
+      new mapValue.possibleMovesCalculatorClass(forwardDirection),
+      color as Color,
+    );
   }
 }

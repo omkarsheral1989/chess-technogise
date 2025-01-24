@@ -2,8 +2,9 @@ import {Board} from "./Board";
 import {Cell} from "./Cell";
 import {IPossibleMovesCalculator} from "./IPossibleMovesCalculator";
 import {range} from "./utils/range";
+import {ForwardDirection} from "./ForwardDirection";
 
-export class KingMovesCalculator implements IPossibleMovesCalculator {
+export class KingMovesCalculator extends IPossibleMovesCalculator {
 
   public getPossibleMoves(currentCell: Cell, board: Board): Cell[] {
     return range(

@@ -3,7 +3,7 @@ import {Cell} from "./Cell";
 import {IPossibleMovesCalculator} from "./IPossibleMovesCalculator";
 import {range} from "./utils/range";
 
-export class QueenMovesCalculator implements IPossibleMovesCalculator {
+export class QueenMovesCalculator extends IPossibleMovesCalculator {
 
   public getPossibleMoves(currentCell: Cell, board: Board): Cell[] {
     return range(0, Board.MAX_ROWS - 1)

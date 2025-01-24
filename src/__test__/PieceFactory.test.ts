@@ -5,28 +5,33 @@ import {PawnMovesCalculator} from "../PawnMovesCalculator";
 import {PieceType} from "../PieceType";
 import {KingMovesCalculator} from "../KingMovesCalculator";
 import {QueenMovesCalculator} from "../QueenMovesCalculator";
+import {Color} from "../Color";
+import {colorDirectionMap, ForwardDirection} from "../ForwardDirection";
 
 describe("PieceFactory class", () => {
 
   describe("createPiece()", () => {
 
     it.each([
-      {typeString: "Pawn", pieceType: PieceType.Pawn, movesCalculatorClass: PawnMovesCalculator},
-      {typeString: "king", pieceType: PieceType.King, movesCalculatorClass: KingMovesCalculator},
-      {typeString: "QUeen", pieceType: PieceType.Queen, movesCalculatorClass: QueenMovesCalculator},
+      {typeString: "Pawn", color: Color.BLACK, pieceType: PieceType.Pawn, movesCalculatorClass: PawnMovesCalculator},
+      {typeString: "king", color: Color.WHITE, pieceType: PieceType.King, movesCalculatorClass: KingMovesCalculator},
+      {typeString: "QUeen", color: Color.WHITE, pieceType: PieceType.Queen, movesCalculatorClass: QueenMovesCalculator},
     ])(
       "should return the piece of given type",
-      ({typeString, pieceType, movesCalculatorClass}) => {
+      ({typeString, pieceType, movesCalculatorClass, color}) => {
         const board = new Board(new CellNameGenerator());
         const cell = board.getCellByName("A2")!;
         const pieceFactory = new PieceFactory();
+        const forwardDirection = colorDirectionMap[color];
 
-        const pawn = pieceFactory.createPiece(typeString, cell, board);
+        const piece = pieceFactory.createPiece(typeString, cell, board, color);
 
-        expect(pawn.getType()).toEqual(pieceType);
-        expect(pawn.getCell()).toEqual(cell);
-        expect(pawn.getBoard()).toEqual(board);
-        expect(pawn.getMovesCalculator() instanceof movesCalculatorClass).toBeTruthy();
+        expect(piece.getType()).toEqual(pieceType);
+        expect(piece.getColor()).toEqual(color);
+        expect(piece.getCell()).toEqual(cell);
+        expect(piece.getBoard()).toEqual(board);
+        expect(piece.getMovesCalculator() instanceof movesCalculatorClass).toBeTruthy();
+        expect(piece.getMovesCalculator().getDirection()).toEqual(forwardDirection);
       },
     );
 

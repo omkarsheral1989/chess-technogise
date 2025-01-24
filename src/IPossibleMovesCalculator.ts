@@ -9,5 +9,10 @@ export abstract class IPossibleMovesCalculator {
     this._direction = direction;
   }
 
+  public getDirection(): ForwardDirection | undefined {
+    return this._direction;
+  }
+
   abstract getPossibleMoves(currentCell: Cell, board: Board): Cell[];
+
 }
