@@ -16,14 +16,14 @@ export class Cli {
     this._prompter = prompt();
   }
 
-  public readPieceTypeAndCellName() {
-    const inputString = this._prompter("Enter <piece type>, <position>: ");
+  public readPieceTypeCellNameAndColor() {
+    const inputString = this._prompter("Enter <piece type>, <position>, <color>: ");
     const strings = inputString?.split(",");
 
-    if (strings?.length !== 2 || strings[0].trim().length === 0 || strings[1].trim().length === 0) {
-      throw new Error("Invalid input");
+    if (strings?.length !== 3 || strings.some(val => val.trim().length === 0)) {
+      throw new Error("Invalid input: " + inputString);
     }
 
-    return {pieceType: strings[0].trim(), cellName: strings[1].trim()};
+    return {pieceType: strings[0].trim(), cellName: strings[1].trim(), color: strings[2].trim()};
   }
 }

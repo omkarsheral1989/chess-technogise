@@ -13,30 +13,30 @@ describe("CLI class", () => {
   const prompter = jest.fn();
   (prompt as jest.Mock).mockReturnValue(prompter);
 
-  describe("readPieceTypeAndCellName()", () => {
+  describe("readPieceTypeCellNameAndColor()", () => {
 
     beforeEach(() => {
       prompter.mockReset();
     });
 
 
-    it.each(["King", " , ", ",A1", "Pawn, A1, King", "", "  ", null])
+    it.each(["King", " , ", ",A1", "Pawn, A1, ", "", "  ", null])
     ("should throw exception if input is invalid", (inputStr) => {
       prompter.mockReturnValue(inputStr);
       const cli = Cli.getInstance();
 
-      expect(() => cli.readPieceTypeAndCellName()).toThrowError("Invalid input");
+      expect(() => cli.readPieceTypeCellNameAndColor()).toThrowError(`Invalid input: ${inputStr}`);
     });
 
 
-    it("should return piece type and cell name", () => {
-      prompter.mockReturnValue(" KinG ,A1 ");
+    it("should return piece type, cell name and piece color", () => {
+      prompter.mockReturnValue(" KinG ,A1, BLack ");
       const cli = Cli.getInstance();
 
-      const result = cli.readPieceTypeAndCellName();
+      const result = cli.readPieceTypeCellNameAndColor();
 
-      expect(result).toEqual({pieceType: "KinG", cellName: "A1"});
-      expect(prompter).toHaveBeenCalledWith("Enter <piece type>, <position>: ");
+      expect(result).toEqual({pieceType: "KinG", cellName: "A1", color: "BLack"});
+      expect(prompter).toHaveBeenCalledWith("Enter <piece type>, <position>, <color>: ");
     });
   });
 });
