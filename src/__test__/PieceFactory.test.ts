@@ -35,8 +35,9 @@ describe("PieceFactory class", () => {
       const cell = board.getCellByName("A2")!;
       const pieceFactory = new PieceFactory();
 
-      expect(() => pieceFactory.createPiece("wrong", cell, board))
-        .toThrowError("Invalid piece type: wrong");
+      expect(() => pieceFactory.createPiece("wrongPieceType", cell, board, Color.WHITE))
+        .toThrowError("Invalid piece type: wrongPieceType");
+    });
 
     it("should throw error for invalid color", () => {
       const board = new Board(new CellNameGenerator());
