@@ -21,7 +21,7 @@ describe("Application class", () => {
 
     it("should log possible moves for given piece", () => {
       const logSpy = jest.spyOn(console, "log").mockImplementation();
-      prompter.mockReturnValue("Pawn, A2");
+      prompter.mockReturnValue("Pawn, A2, white");
 
       Application.main();
 
